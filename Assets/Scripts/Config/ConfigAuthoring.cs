@@ -14,6 +14,7 @@ public class ConfigAuthoring : MonoBehaviour
     
     [Header("Bullet Stats")]
     public float BulletSpeed = 10f;
+    public float FireRate = 0.5f;
 
     [Header("Asteroid Stats")] 
     public float AsteroidSpawnFreq = 1f;
@@ -34,6 +35,7 @@ public class ConfigAuthoring : MonoBehaviour
                 PlayerSpeed = configAuthoring.PlayerSpeed,
                 PlayerHealth = configAuthoring.PlayerHealth,
                 BulletSpeed = configAuthoring.BulletSpeed,
+                FireRate = configAuthoring.FireRate,
                 AsteroidSpawnFreq = configAuthoring.AsteroidSpawnFreq,
                 AsteroidSpeed = configAuthoring.AsteroidSpeed,
                 AsteroidSpawnRadius = configAuthoring.AsteroidSpawnRadius,
@@ -50,6 +52,7 @@ public struct Config : IComponentData
     public float PlayerSpeed;
     public int PlayerHealth;
     public float BulletSpeed;
+    public float FireRate;
     public float AsteroidSpawnFreq;
     public float AsteroidSpeed;
     public float AsteroidSpawnRadius;

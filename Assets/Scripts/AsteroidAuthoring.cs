@@ -8,10 +8,7 @@ public class AsteroidAuthoring : MonoBehaviour
         public override void Bake(AsteroidAuthoring asteroidAuthoring)
         {
             Entity entity = GetEntity(TransformUsageFlags.Dynamic);
-            AddComponent( entity, new Asteroid()
-            {
-                
-            });
+            AddComponent( entity, new Asteroid());
         }
     }
 }

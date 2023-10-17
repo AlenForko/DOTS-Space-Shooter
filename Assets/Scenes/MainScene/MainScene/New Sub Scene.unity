@@ -173,10 +173,11 @@ MonoBehaviour:
   PlayerSpeed: 10
   PlayerHealth: 3
   BulletSpeed: 10
+  FireRate: 0.5
   AsteroidSpawnFreq: 1
   AsteroidSpeed: 10
   AsteroidSpawnRadius: 5
-  AsteroidSpawnAmount: 10
+  AsteroidSpawnAmount: 1000
 --- !u!114 &1064263899
 MonoBehaviour:
   m_ObjectHideFlags: 0
