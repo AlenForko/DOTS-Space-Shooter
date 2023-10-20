@@ -7,9 +7,10 @@ public class ConfigAuthoring : MonoBehaviour
     [Header("Prefabs")]
     public GameObject AsteroidPrefab;
     public GameObject BulletPrefab;
+    public GameObject PlayerPrefab;
     
     [Header("Player Stats")]
-    public float PlayerSpeed = 10f;
+    public float PlayerTurnSpeed = 10f;
     public int PlayerHealth = 3;
     
     [Header("Bullet Stats")]
@@ -32,7 +33,8 @@ public class ConfigAuthoring : MonoBehaviour
             {
                 AsteroidPrefab = GetEntity(configAuthoring.AsteroidPrefab, TransformUsageFlags.Dynamic),
                 BulletPrefab = GetEntity(configAuthoring.BulletPrefab, TransformUsageFlags.Dynamic),
-                PlayerSpeed = configAuthoring.PlayerSpeed,
+                PlayerPrefab = GetEntity(configAuthoring.PlayerPrefab, TransformUsageFlags.Dynamic),
+                PlayerTurnSpeed = configAuthoring.PlayerTurnSpeed,
                 PlayerHealth = configAuthoring.PlayerHealth,
                 BulletSpeed = configAuthoring.BulletSpeed,
                 FireRate = configAuthoring.FireRate,
@@ -49,7 +51,8 @@ public struct Config : IComponentData
 {
     public Entity AsteroidPrefab;
     public Entity BulletPrefab;
-    public float PlayerSpeed;
+    public Entity PlayerPrefab;
+    public float PlayerTurnSpeed;
     public int PlayerHealth;
     public float BulletSpeed;
     public float FireRate;

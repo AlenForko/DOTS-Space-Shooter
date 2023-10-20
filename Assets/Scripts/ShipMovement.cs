@@ -1,17 +1,42 @@
+using Unity.Burst;
+using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 
-public class ShipMovement : MonoBehaviour
+public partial struct ShipMovement : ISystem
 {
-    [SerializeField]
-    private float _RotationSpeed = 30f;
-
-    private void Update()
+    [BurstCompile]
+    public void OnCreate(ref SystemState state)
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-        float rotationAngle = horizontalInput * _RotationSpeed * Time.deltaTime;
-
-        transform.Rotate(new Vector3(0, 0, -1) * rotationAngle);
+        state.RequireForUpdate<Config>();
+        state.RequireForUpdate<Player>();
     }
     
+    [BurstCompile]
+    public void OnUpdate(ref SystemState state)
+    {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        
+        if (horizontal != 0)
+        {
+            RotatePlayer(horizontal, ref state);
+        }
+    }
+
+    private void RotatePlayer(float horizontalInput, ref SystemState state)
+    {
+        
+        Config config = SystemAPI.GetSingleton<Config>();
+        Player player = SystemAPI.GetSingleton<Player>();
+        RefRW<LocalTransform> playerTransform = SystemAPI.GetComponentRW<LocalTransform>(player.Entity);
+    
+        quaternion currentRotation = playerTransform.ValueRO.Rotation;
+        float rotationAngle = -config.PlayerTurnSpeed * SystemAPI.Time.DeltaTime * horizontalInput;
+        
+        quaternion rotationDelta = quaternion.RotateZ(rotationAngle);
+        quaternion newRotation = math.mul(currentRotation, rotationDelta);
+        
+        playerTransform.ValueRW.Rotation = newRotation;
+    }
 }
