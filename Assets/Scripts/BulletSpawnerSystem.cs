@@ -13,8 +13,7 @@ public partial struct BulletSpawnerSystem : ISystem
     public void OnCreate(ref SystemState state)
     {
         state.RequireForUpdate<Config>();
-        
-        // add player later
+        state.RequireForUpdate<Player>();
     }
 
     [BurstCompile]
@@ -25,19 +24,29 @@ public partial struct BulletSpawnerSystem : ISystem
         // Update the time since the last shot
         timeSinceLastFire += Time.deltaTime;
 
+        //Gets player transform
+        LocalTransform playerTransform = SystemAPI.GetComponentRO<LocalTransform>(SystemAPI.GetSingleton<Player>().Entity).ValueRO;
+        
         if (Input.GetKeyDown(KeyCode.Space) && timeSinceLastFire >= config.FireRate)
         {
             var bullet = state.EntityManager.Instantiate(config.BulletPrefab);
-                
+
+            float3 forwardVector = math.mul(playerTransform.Rotation, new float3(0, 1, 0));
+
+            float3 spawnOffset = forwardVector * 1.2f;
+
+            float3 spawnPos = playerTransform.Position + spawnOffset;
+            
             state.EntityManager.SetComponentData(bullet, new LocalTransform
             {
-                Position = 0f,
-                // Set position to be player's position and rotation
+                Position = spawnPos,
+                Rotation = playerTransform.Rotation,
+                Scale = 1f
             });
         
             state.EntityManager.SetComponentData(bullet, new Velocity
             {
-                Value = new float3(0, config.BulletSpeed, 0)
+                Value = forwardVector * config.BulletSpeed
             });
 
             // Reset the time since the last shot

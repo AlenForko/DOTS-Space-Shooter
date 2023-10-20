@@ -171,13 +171,13 @@ MonoBehaviour:
   AsteroidPrefab: {fileID: 3138340317436738644, guid: 3de0d47846750364498c29a227a9876f, type: 3}
   BulletPrefab: {fileID: 1542828846291853712, guid: 21c4cec7fe34b6e48a10710cc3ed2c2f, type: 3}
   PlayerPrefab: {fileID: 1214508686104544899, guid: 1825444269927a140bd8f419584d8611, type: 3}
-  PlayerTurnSpeed: 10
+  PlayerTurnSpeed: 3
   PlayerHealth: 3
   BulletSpeed: 10
   FireRate: 0.5
   AsteroidSpawnFreq: 1
   AsteroidSpeed: 10
-  AsteroidSpawnRadius: 5
+  AsteroidSpawnRadius: 10
   AsteroidSpawnAmount: 5
 --- !u!114 &1064263899
 MonoBehaviour:
