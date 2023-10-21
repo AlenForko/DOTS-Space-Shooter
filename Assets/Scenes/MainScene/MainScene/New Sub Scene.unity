@@ -172,12 +172,13 @@ MonoBehaviour:
   PlayerPrefab: {fileID: 1214508686104544899, guid: 1825444269927a140bd8f419584d8611, type: 3}
   PlayerTurnSpeed: 3
   PlayerHealth: 3
-  BulletSpeed: 10
+  BulletSpeed: 2
   FireRate: 0.5
+  BulletLifeSpan: 3
   AsteroidSpawnFreq: 1
-  AsteroidSpeed: 10
+  AsteroidSpeed: 1
   AsteroidSpawnRadius: 10
-  AsteroidSpawnAmount: 1000
+  AsteroidSpawnAmount: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
