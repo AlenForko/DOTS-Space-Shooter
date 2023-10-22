@@ -11,13 +11,14 @@ public partial struct BulletMovement : ISystem
     public void OnCreate(ref SystemState state)
     {
         state.RequireForUpdate<Config>();
+        state.RequireForUpdate<Player>();
     }
 
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
         Config config = SystemAPI.GetSingleton<Config>();
-
+        
         foreach (var (bulletTransform, velocity) in
                  SystemAPI.Query<RefRW<LocalTransform>, RefRW<Velocity>>().WithAll<Bullet>())
         {

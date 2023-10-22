@@ -3,6 +3,7 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
+[UpdateBefore(typeof(TransformSystemGroup))]
 public partial struct AsteroidsMovement : ISystem
 {
     [BurstCompile]
@@ -27,8 +28,7 @@ public partial struct AsteroidsMovement : ISystem
 
             asteroidTransform.ValueRW.Position += dir * SystemAPI.Time.DeltaTime * config.AsteroidSpeed;
             
-            
-            if (math.distance(asteroidTransform.ValueRO.Position, playerPos) <= 0.1f)
+            if (math.distance(asteroidTransform.ValueRO.Position, playerPos) <= 1f)
             {
                 SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(asteroidPrefab);
             }
