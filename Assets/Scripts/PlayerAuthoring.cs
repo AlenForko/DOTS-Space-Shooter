@@ -12,10 +12,6 @@ public class PlayerAuthoring : MonoBehaviour
             {
                 Entity = entity
             });
-            AddComponent(entity, new PlayerHealth()
-            {
-                
-            });
         }
     }
 }
@@ -23,9 +19,4 @@ public class PlayerAuthoring : MonoBehaviour
 public struct Player : IComponentData
 {
     public Entity Entity;
-}
-
-public struct PlayerHealth : IComponentData
-{
-    public int Health;
 }

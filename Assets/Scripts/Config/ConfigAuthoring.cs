@@ -11,7 +11,6 @@ public class ConfigAuthoring : MonoBehaviour
     
     [Header("Player Stats")]
     public float PlayerTurnSpeed = 10f;
-    public int PlayerHealth = 3;
     
     [Header("Bullet Stats")]
     public float BulletSpeed = 10f;
@@ -36,7 +35,6 @@ public class ConfigAuthoring : MonoBehaviour
                 BulletPrefab = GetEntity(configAuthoring.BulletPrefab, TransformUsageFlags.Dynamic),
                 PlayerPrefab = GetEntity(configAuthoring.PlayerPrefab, TransformUsageFlags.Dynamic),
                 PlayerTurnSpeed = configAuthoring.PlayerTurnSpeed,
-                PlayerHealth = configAuthoring.PlayerHealth,
                 BulletSpeed = configAuthoring.BulletSpeed,
                 FireRate = configAuthoring.FireRate,
                 BulletLifeSpan = configAuthoring.BulletLifeSpan,
@@ -55,7 +53,6 @@ public struct Config : IComponentData
     public Entity BulletPrefab;
     public Entity PlayerPrefab;
     public float PlayerTurnSpeed;
-    public int PlayerHealth;
     public float BulletSpeed;
     public float FireRate;
     public float BulletLifeSpan;

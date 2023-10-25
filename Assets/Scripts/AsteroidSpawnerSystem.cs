@@ -8,7 +8,8 @@ using Random = UnityEngine.Random;
 public partial struct AsteroidSpawnerSystem : ISystem
 {
     private float _LastSpawnTime;
-    
+    private const float TAU = Mathf.PI * 2;
+
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
@@ -26,13 +27,12 @@ public partial struct AsteroidSpawnerSystem : ISystem
         {
             for (int i = 0; i < config.AsteroidSpawnAmount; i++)
             {
-                float angle = Random.Range(0f, Mathf.PI * 2);
-
-                float xPos = config.AsteroidSpawnRadius * Mathf.Cos(angle);
-                float yPos = config.AsteroidSpawnRadius * Mathf.Sin(angle);
-                
-                
                 Entity asteroid = state.EntityManager.Instantiate(config.AsteroidPrefab);
+                
+                float spawnRadius = Random.Range(config.AsteroidSpawnRadius, config.AsteroidSpawnRadius + 5f);
+                float angle = Random.Range(0f, TAU);
+                float xPos = spawnRadius * Mathf.Cos(angle);
+                float yPos = spawnRadius * Mathf.Sin(angle);
 
                 SystemAPI.GetComponentRW<LocalTransform>(asteroid).ValueRW.Position = new float3(xPos, yPos, 0);
             }
