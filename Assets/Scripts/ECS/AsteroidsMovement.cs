@@ -21,6 +21,7 @@ public partial struct AsteroidsMovement : ISystem
 
         //Player is always at 0,0,0 so no need to find the player any other way
         float3 playerPos = float3.zero;
+
         
         foreach (var (asteroidTransform, asteroidPrefab) in SystemAPI.Query<RefRW<LocalTransform>>().WithAll<Asteroid>().WithEntityAccess())
         {

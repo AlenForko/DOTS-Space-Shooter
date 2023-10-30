@@ -27,7 +27,7 @@ public partial struct BulletSpawnerSystem : ISystem
         //Gets player transform
         LocalTransform playerTransform = SystemAPI.GetComponentRO<LocalTransform>(SystemAPI.GetSingleton<Player>().Entity).ValueRO;
         
-        if (Input.GetKeyDown(KeyCode.Space) && timeSinceLastFire >= config.FireRate)
+        if (Input.GetKey(KeyCode.Space) && timeSinceLastFire >= config.FireRate)
         {
             var bullet = state.EntityManager.Instantiate(config.BulletPrefab);
 

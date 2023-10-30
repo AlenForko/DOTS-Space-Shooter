@@ -21,11 +21,10 @@ public partial struct BulletCollision : ISystem
          foreach (var (asteroidTransform, asteroidEntity) in SystemAPI.Query<RefRW<LocalTransform>>()
                      .WithAll<Asteroid>().WithEntityAccess())
          {
-            if (math.distance(bulletTransform.ValueRO.Position, asteroidTransform.ValueRO.Position) < 1f)
-            {
-               SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(asteroidEntity);
-               SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(bulletEntity);
-            }
+            if (!(math.distance(bulletTransform.ValueRO.Position, asteroidTransform.ValueRO.Position) < 1f)) continue;
+            
+            SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(asteroidEntity);
+            SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(bulletEntity);
          }
       }
    }
