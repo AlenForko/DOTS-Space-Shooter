@@ -9,12 +9,10 @@ public class FPSDisplay : MonoBehaviour
     private float _deltaTime;
 
     private World _world;
-    private EntityManager _entityManager;
 
     private void Start()
     {
         _world = World.DefaultGameObjectInjectionWorld;
-        _entityManager = _world.EntityManager;
     }
 
     void Update()
@@ -24,6 +22,8 @@ public class FPSDisplay : MonoBehaviour
 
     void OnGUI()
     {
+        EntityManager entityManager = _world.EntityManager;
+        
         int w = Screen.width, h = Screen.height;
 
         GUIStyle style = new GUIStyle();
@@ -36,7 +36,7 @@ public class FPSDisplay : MonoBehaviour
         float msec = _deltaTime * 1000.0f;
         float fps = 1.0f / _deltaTime;
         int activeAsteroids =
-            _entityManager.CreateEntityQuery(ComponentType.ReadOnly<Asteroid>()).CalculateEntityCount();
+            entityManager.CreateEntityQuery(ComponentType.ReadOnly<Asteroid>()).CalculateEntityCount();
 
         string text = string.Format("{0:0.0} ms ({1:0.} fps / Asteroids: {2} )", msec, fps, activeAsteroids);
         GUI.Label(rect, text, style);
