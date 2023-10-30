@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonoPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 292095661330568021, guid: a91944baf760511438e03a32cac76d7f, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5782393049077249552, guid: a91944baf760511438e03a32cac76d7f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -213,8 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a6092a65e834e4aa93418372dfcc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _SpawnAmount: 100
-  AsteroidPrefab: {fileID: -5582943191320522607, guid: 3de0d47846750364498c29a227a9876f, type: 3}
+  _SpawnAmount: 1000
+  AsteroidPrefab: {fileID: -3940654637088315114, guid: e3e064e49e01a3b43aa1faab70289715, type: 3}
 --- !u!4 &996416913
 Transform:
   m_ObjectHideFlags: 0

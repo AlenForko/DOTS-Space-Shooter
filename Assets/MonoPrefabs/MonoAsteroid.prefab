@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4843615063721584632}
   - component: {fileID: 5247136293523052699}
+  - component: {fileID: 1123375890983004769}
   - component: {fileID: 2983341073216084536}
   - component: {fileID: -3940654637088315114}
   m_Layer: 0
@@ -86,6 +87,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1123375890983004769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211109300013217148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09db27b2e5a15e74fb24524db889d28e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  AsteroidSpeed: 0.5
 --- !u!58 &2983341073216084536
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -115,7 +130,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

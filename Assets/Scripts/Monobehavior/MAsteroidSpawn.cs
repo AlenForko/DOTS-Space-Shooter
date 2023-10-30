@@ -31,8 +31,9 @@ public class MAsteroidSpawn : MonoBehaviour
 
                 Vector2 SpawnPos = new Vector2(xPos, yPos);
 
-                Rigidbody2D AsteroidRb = Instantiate(AsteroidPrefab, SpawnPos, Quaternion.identity);
+                Instantiate(AsteroidPrefab, SpawnPos, Quaternion.identity);
             }
+            _LastSpawnTime = 0;
         }
     }
 }
