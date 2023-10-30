@@ -29,7 +29,7 @@ public partial struct AsteroidsMovement : ISystem
 
             asteroidTransform.ValueRW.Position += dir * SystemAPI.Time.DeltaTime * config.AsteroidSpeed;
             
-            if (math.distance(asteroidTransform.ValueRO.Position, playerPos) <= 1f)
+            if (math.distance(asteroidTransform.ValueRO.Position, playerPos) <= 0.5f)
             {
                 SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(asteroidPrefab);
             }

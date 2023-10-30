@@ -33,7 +33,7 @@ public partial struct BulletSpawnerSystem : ISystem
 
             float3 forwardVector = math.mul(playerTransform.Rotation, new float3(0, 1, 0));
 
-            float3 spawnOffset = forwardVector * 1.2f;
+            float3 spawnOffset = forwardVector * 0.7f;
 
             float3 spawnPos = playerTransform.Position + spawnOffset;
             
