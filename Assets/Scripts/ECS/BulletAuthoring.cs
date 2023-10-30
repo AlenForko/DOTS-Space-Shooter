@@ -17,7 +17,7 @@ public class BulletAuthoring : MonoBehaviour
 
 public struct Bullet : IComponentData
 {
-
+    public float TimeAlive;
 }
 
 public struct Velocity : IComponentData

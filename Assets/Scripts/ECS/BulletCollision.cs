@@ -18,7 +18,9 @@ public partial struct BulletCollision : ISystem
    public void OnUpdate(ref SystemState state)
    {
       Config config = SystemAPI.GetSingleton<Config>();
+      
       float outerRadius = config.AsteroidSpawnRadius;
+      
       foreach (var (bulletTransform, bulletEntity) in SystemAPI.Query<RefRW<LocalTransform>>().WithAll<Bullet>().WithEntityAccess())
       {
          foreach (var (asteroidTransform, asteroidEntity) in SystemAPI.Query<RefRW<LocalTransform>>()
@@ -27,12 +29,12 @@ public partial struct BulletCollision : ISystem
             if (!(math.distance(bulletTransform.ValueRO.Position, asteroidTransform.ValueRO.Position) < 0.5f)) continue;
             
             SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(asteroidEntity);
-         }
-
-         float distanceFromCenter = math.distance(bulletTransform.ValueRO.Position, float3.zero);
-         if (distanceFromCenter > outerRadius)
-         {
-            SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(bulletEntity);
+            
+            float distanceFromCenter = math.distance(bulletTransform.ValueRO.Position, float3.zero);
+            if (distanceFromCenter > outerRadius)
+            {
+               SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged).DestroyEntity(bulletEntity);
+            }
          }
       }
    }

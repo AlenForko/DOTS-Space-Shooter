@@ -176,7 +176,7 @@ MonoBehaviour:
   BulletLifeSpan: 3
   AsteroidSpawnFreq: 2
   AsteroidSpeed: 1
-  AsteroidSpawnRadius: 100
+  AsteroidSpawnRadius: 10
   AsteroidSpawnAmount: 1000
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
