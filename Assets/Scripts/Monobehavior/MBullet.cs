@@ -9,7 +9,6 @@ public class MBullet : MonoBehaviour
     
     [SerializeField]
     private GameObject _Offset;
-
     private float _TimeSinceLastFired;
 
     [SerializeField] 
@@ -26,12 +25,14 @@ public class MBullet : MonoBehaviour
     void Update()
     {
         _TimeSinceLastFired += Time.deltaTime;
-        
         if (Input.GetKey(KeyCode.Space) && _TimeSinceLastFired >= 0.1f)
         {
             Rigidbody2D rbBullet = Instantiate(_BulletPrefab, _Offset.transform.position, _Player.transform.rotation);
             rbBullet.AddForce(_Player.transform.up * _BulletSpeed);
             _TimeSinceLastFired = 0;
+            
+            // Destroy bullet after 3 seconds
+            Destroy(rbBullet.gameObject, 3);
         }
     }
 }
