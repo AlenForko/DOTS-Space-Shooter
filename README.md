@@ -13,7 +13,7 @@ destroying themselves when they collide with the player.
 - 2 - restart/start OOB Game
 - Q - Quit game
 
-## Optimization https://github.com/AlenForko
+## Optimization
 
 ### ECS
 For the optimization part of this project, I used ECS (Entity Component System) for all of my scripts - spawning, moving & shooting. If I were to have 100.000
