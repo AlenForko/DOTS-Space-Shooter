@@ -10,7 +10,7 @@ destroying themselves when they collide with the player.
 - A/D or Left/Right arrow keys - Rotate ship
 - Space - Shoot
 - 1 - restart/start ECS Game
-- 2 - restart/start OOB Game
+- 2 - restart/start OOP Game
 - Q - Quit game
 
 ## Optimization
@@ -29,7 +29,7 @@ where the player is waiting to destroy these asteroids.
 
 Here we are achieving 30+ FPS. The screen is completely full with asteroids, getting destroyed when they reach the player, and the player is shooting out bullets at the same time.
 
-### OOB
+### OOP
 
 I tried making the game using simple OOB programming, and the results are really terrible. The performance completely drops after 6.000 game objects spawned and starting to collide
 with the player at the same time. I didn't add bullet collision, as I didn't see a point of attempting even to see the performance difference with bullets involved as well.
